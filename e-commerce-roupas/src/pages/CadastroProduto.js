@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import Input from '../components/Input';  // Componente genérico de Input
-import '../css/CadastroProduto.css';  // Corrigido para o caminho correto
+import '../css/cadastroProdutos.css';  // Corrigido para o caminho correto
+import Menu from '../components/Menu';  // Importando o Menu aqui
 
 const CadastroProduto = () => {
   const [nome, setNome] = useState('');
@@ -52,6 +54,9 @@ const CadastroProduto = () => {
 
   return (
     <div className="form-container">
+      {/* Menu será exibido apenas nessa página */}
+      <Menu />
+
       <h2>Cadastro de Produto</h2>
 
       {mensagem && <div className="success-message">{mensagem}</div>}

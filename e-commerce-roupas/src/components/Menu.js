@@ -12,8 +12,10 @@ function Menu() {
       </div>
       <nav className="menu-nav">
         <Link to="/" className="menu-link">INÍCIO</Link>
+        <a href="#fornecedores" className="menu-link">FORNECEDORES</a> 
         <a href="#loja" className="menu-link">LOJA</a>
         <a href="#roupas" className="menu-link">ROUPAS</a>
+        
         <FaSearch className="menu-search" />
         <FaUserCircle className="menu-user" />
       </nav>

@@ -1,49 +1,66 @@
+/* menu.css */
+
+/* Container do cabeçalho */
 .menu-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .menu-logo {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-  }
-  
-  .menu-icon {
-    font-size: 24px;
-    margin-right: 10px;
-  }
-  
-  .menu-title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .menu-nav {
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu-link {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  .menu-search {
-    font-size: 18px;
-    margin-left: 15px;
-    cursor: pointer;
-  }
-  
-  .menu-user {
-    font-size: 24px;
-    margin-left: 15px;
-    cursor: pointer;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.menu-logo {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.menu-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.menu-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Alterações para centralizar os links */
+.menu-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza os itens de navegação */
+  gap: 30px;  /* Ajuste para aumentar o espaçamento entre os itens */
+  width: 100%;
+}
+
+.menu-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.menu-link:hover {
+  color: #f39c12; /* Cor de destaque ao passar o mouse */
+}
+
+.menu-search, .menu-user {
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-search:hover, .menu-user:hover {
+  color: #f39c12;
+}
+
+/* Adicionar um novo link chamado 'Fornecedores' */
+.menu-nav .menu-link.fornecedores {
+  font-weight: bold; /* Deixa o link mais destacado */
+}

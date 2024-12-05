@@ -1,0 +1,58 @@
+/* CadastroProduto.css */
+
+/* Contêiner do formulário */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* Espaçamento do topo */
+  }
+  
+  .form {
+    display: flex;
+    flex-wrap: wrap;  /* Permite que os itens se quebrem para a próxima linha se necessário */
+    justify-content: space-between; /* Espalha os elementos */
+    width: 100%;
+    max-width: 1200px;  /* Tamanho máximo do formulário */
+  }
+  
+  .left-section, .right-section {
+    width: 48%;  /* Definindo largura de cada seção */
+    display: flex;
+    flex-direction: column; /* Coloca os itens um embaixo do outro */
+    gap: 20px;  /* Espaçamento entre os campos dentro de cada seção */
+  }
+  
+  .right-section {
+    align-items: flex-end; /* Alinha os campos da direita ao lado direito */
+  }
+  
+  button {
+    align-self: center; /* Centraliza o botão no meio do formulário */
+    margin-top: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 100px;
+  }
+  
+  /* Adicionando um pouco de espaçamento para inputs */
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .image-preview {
+    max-width: 150px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+  }
+  

@@ -1,0 +1,16 @@
+
+{
+    "produtos": [
+      {
+        "id": 1,
+        "nome": "Produto A",
+        "descricao": "Descrição do Produto A",
+        "preco": "50,00",
+        "codigo": "123456789",
+        "categoria": "feminino",
+        "quantidade": 10,
+        "imagem": "https://via.placeholder.com/150"
+      }
+    ]
+  }
+  

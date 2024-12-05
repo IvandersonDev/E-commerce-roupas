@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import RecuperarSenha from "./components/RecuperarSenha";
 import Registro from "./components/Registro";
+import CadastroProduto from "./pages/CadastroProduto";  // Importação corrigida
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/recuperar-senha" element={<RecuperarSenha />} />
+          <Route path="/cadastro-produto" element={<CadastroProduto />} /> {/* Nova rota */}
         </Routes>
       </div>
     </Router>

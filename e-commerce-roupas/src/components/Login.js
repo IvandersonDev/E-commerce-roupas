@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaShoppingBag, FaSearch, FaUserCircle } from "react-icons/fa";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Menu from "../components/Menu";
 
 function Login() {
   const navigate = useNavigate();
@@ -68,20 +67,7 @@ function Login() {
           alignItems: "center",
         }}
       >
-        {/* Logo com ícone */}
-        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-          <FaShoppingBag style={{ fontSize: "24px", marginRight: "10px" }} />
-          <div style={{ fontSize: "24px", fontWeight: "bold" }}>Pabna</div>
-        </div>
-
-        {/* Menu */}
-        <nav style={{ display: "flex", alignItems: "center" }}>
-          <Link to="/" style={linkStyle}>INÍCIO</Link>
-          <a href="#loja" style={linkStyle}>LOJA</a>
-          <a href="#roupas" style={linkStyle}>ROUPAS</a>
-          <FaSearch style={{ fontSize: "18px", marginLeft: "15px", cursor: "pointer" }} />
-          <FaUserCircle style={{ fontSize: "24px", marginLeft: "15px", cursor: "pointer" }} />
-        </nav>
+        <Menu />
       </header>
 
       {/* Mensagem de resposta como pop-up */}
@@ -227,14 +213,6 @@ function Login() {
     </div>
   );
 }
-
-const linkStyle = {
-  color: "#fff",
-  textDecoration: "none",
-  margin: "0 15px",
-  fontSize: "14px",
-  fontWeight: "bold",
-};
 
 const inputStyle = {
   width: "100%",

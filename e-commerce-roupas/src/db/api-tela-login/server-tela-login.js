@@ -47,13 +47,11 @@ const saveUsers = (users) => {
   }
 };
 
-// Rota para obter usuários
 app.get("/users", (req, res) => {
   const users = loadUsers();
   res.json(users);
 });
 
-// Rota para adicionar usuário
 app.post("/users", (req, res) => {
   const { email, password } = req.body;
   const users = loadUsers();
@@ -65,7 +63,6 @@ app.post("/users", (req, res) => {
   res.status(201).json({ message: "Usuário registrado com sucesso." });
 });
 
-// Rota para excluir usuário
 app.delete("/users/:email", (req, res) => {
   const { email } = req.params;
   let users = loadUsers();
@@ -78,28 +75,23 @@ app.delete("/users/:email", (req, res) => {
   res.json({ message: "Usuário excluído com sucesso." });
 });
 
-// Função para gerar um token aleatório
 const generateToken = () => {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
-// Rota para recuperar senha
 app.post("/recover-password", (req, res) => {
   const { email } = req.body;
   const users = loadUsers();
 
-  // Verifica se o usuário existe
   const user = users.find((user) => user.email === email);
 
   if (!user) {
     return res.status(404).json({ error: "E-mail não encontrado." });
   }
 
-  // Gera um token e salva em um novo arquivo JSON
   const token = generateToken();
   const recoveryFilePath = path.resolve(__dirname, `./recovery/${email}.json`);
 
-  // Certifique-se de que o diretório existe
   if (!fs.existsSync(path.dirname(recoveryFilePath))) {
     fs.mkdirSync(path.dirname(recoveryFilePath), { recursive: true });
   }
@@ -109,7 +101,6 @@ app.post("/recover-password", (req, res) => {
   res.status(200).json({ message: "Token de recuperação gerado com sucesso.", token });
 });
 
-// Iniciar o servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

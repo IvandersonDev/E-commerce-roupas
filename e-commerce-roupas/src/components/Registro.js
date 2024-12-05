@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaShoppingBag } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Menu from "../components/Menu";
 
 
 function Registro() {
@@ -50,19 +50,7 @@ function Registro() {
           alignItems: "center",
         }}
       >
-        {/* Logo com ícone */}
-        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-          <FaShoppingBag style={{ fontSize: "24px", marginRight: "10px" }} />
-          <div style={{ fontSize: "24px", fontWeight: "bold" }}>Pabna</div>
-        </div>
-
-        {/* Menu */}
-        <nav style={{ display: "flex", alignItems: "center" }}>
-          <Link to="/" style={linkStyle}>INÍCIO</Link>
-          <a href="#fornecedores" style={linkStyle}>FORNECEDORES</a>
-          <a href="#roupas" style={linkStyle}>ROUPAS</a>
-          <a href="#contato" style={linkStyle}>CONTATO</a>
-        </nav>
+      <Menu />
       </header>
 
       {/* Mensagem de resposta como pop-up */}

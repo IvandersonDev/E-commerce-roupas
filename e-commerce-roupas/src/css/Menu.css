@@ -1,37 +1,49 @@
-/* src/components/Menu.css */
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.menu-header {
+    background-color: #333;
+    color: #fff;
     padding: 10px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: #000;
-    margin-right: 20px;
-    font-size: 18px;
-  }
-  
-  nav a:hover {
-    color: #007BFF; /* Cor ao passar o mouse */
-  }
-  
-  nav .logo {
     display: flex;
+    justify-content: center;
     align-items: center;
   }
   
-  nav .logo .icon {
+  .menu-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .menu-icon {
     font-size: 24px;
     margin-right: 10px;
   }
   
-  nav .icons {
+  .menu-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .menu-nav {
     display: flex;
     align-items: center;
   }
   
+  .menu-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .menu-search {
+    font-size: 18px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  
+  .menu-user {
+    font-size: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+  }

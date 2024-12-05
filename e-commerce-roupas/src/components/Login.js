@@ -1,28 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaShoppingBag, FaSearch, FaUserCircle } from "react-icons/fa";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("savedEmail");
+    const savedPassword = localStorage.getItem("savedPassword");
+    if (savedEmail && savedPassword) {
+      setEmail(savedEmail);
+      setPassword(savedPassword);
+      setRememberMe(true);
+    }
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:3001/login", { email, password });
       setMessage(response.data.message);
+
+      if (rememberMe) {
+        localStorage.setItem("savedEmail", email);
+        localStorage.setItem("savedPassword", password);
+      } else {
+        localStorage.removeItem("savedEmail");
+        localStorage.removeItem("savedPassword");
+      }
+
+      if (response.data.success) {
+        navigate("/home");
+      }
     } catch (error) {
       setMessage(error.response?.data?.error || "Erro ao efetuar login");
     }
   };
 
+  const handleRememberMeChange = (e) => {
+    setRememberMe(e.target.checked);
+    if (!e.target.checked) {
+      localStorage.removeItem("savedEmail");
+      localStorage.removeItem("savedPassword");
+    }
+  };
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", position: "relative" }}>
@@ -157,7 +185,12 @@ function Login() {
                 }}
               >
                 <label>
-                  <input type="checkbox" style={{ marginRight: "5px" }} />
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={handleRememberMeChange}
+                    style={{ marginRight: "5px" }}
+                  />
                   Lembre de mim
                 </label>
                 <button

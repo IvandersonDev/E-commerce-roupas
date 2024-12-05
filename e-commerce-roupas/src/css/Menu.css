@@ -1,0 +1,37 @@
+/* src/components/Menu.css */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #000;
+    margin-right: 20px;
+    font-size: 18px;
+  }
+  
+  nav a:hover {
+    color: #007BFF; /* Cor ao passar o mouse */
+  }
+  
+  nav .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  nav .logo .icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  nav .icons {
+    display: flex;
+    align-items: center;
+  }
+  

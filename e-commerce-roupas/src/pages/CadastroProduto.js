@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../components/Input';  // Componente genérico de Input
-import './CadastroProduto.css';  // Certifique-se de que o estilo está importado
+import '../css/CadastroProduto.css';  // Corrigido para o caminho correto
 
 const CadastroProduto = () => {
   const [nome, setNome] = useState('');

@@ -15,6 +15,7 @@ function Menu() {
         <a href="#fornecedores" className="menu-link">FORNECEDORES</a> 
         <a href="#loja" className="menu-link">LOJA</a>
         <a href="#roupas" className="menu-link">ROUPAS</a>
+        <Link to="/Contact" className="menu-link">CONTATO</Link>
         
         <FaSearch className="menu-search" />
         <FaUserCircle className="menu-user" />

@@ -40,7 +40,7 @@ const loadUsers = () => {
 
 const saveUsers = (users) => {
   try {
-    fs.writeFileSync(FILE_PATH, JSON.stringify(users, null, 2));
+    fs.writeFileSync(FILE_PATH, JSON.stringify(users, undefined, 2));
     console.log("Dados salvos com sucesso:", users);
   } catch (error) {
     console.error("Erro ao salvar os dados:", error);
@@ -96,7 +96,7 @@ app.post("/recover-password", (req, res) => {
     fs.mkdirSync(path.dirname(recoveryFilePath), { recursive: true });
   }
 
-  fs.writeFileSync(recoveryFilePath, JSON.stringify({ email, token }, null, 2));
+  fs.writeFileSync(recoveryFilePath, JSON.stringify({ email, token }, undefined, 2));
 
   res.status(200).json({ message: "Token de recuperação gerado com sucesso.", token });
 });

@@ -12,7 +12,7 @@ function Registro() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-
+  
     try {
       const response = await fetch("http://localhost:3001/users", {
         method: "POST",
@@ -21,19 +21,21 @@ function Registro() {
         },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (response.ok) {
         setMessage("Usuário registrado com sucesso!");
         setEmail("");
         setPassword("");
-      } else {
-        const data = await response.json();
-        setMessage(data.error || "Erro ao registrar usuário.");
+        return;
       }
+      
+      const data = await response.json();
+      setMessage(data.error || "Erro ao registrar usuário.");
     } catch (err) {
       setMessage("Erro ao conectar ao servidor.");
     }
   };
+  
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", position: "relative" }}>

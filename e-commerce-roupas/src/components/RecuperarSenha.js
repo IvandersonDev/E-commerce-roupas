@@ -11,7 +11,7 @@ function RecuperarSenha() {
     e.preventDefault();
     setMessage("");
     setError("");
-
+  
     try {
       const response = await fetch("http://localhost:3001/recover-password", {
         method: "POST",
@@ -20,18 +20,20 @@ function RecuperarSenha() {
         },
         body: JSON.stringify({ email }),
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         setMessage(`Token gerado com sucesso! Verifique o arquivo ${email}.json.`);
-      } else {
-        const data = await response.json();
-        setError(data.error || "Erro ao processar a recuperação de senha.");
+        return;
       }
+      
+      const data = await response.json();
+      setError(data.error || "Erro ao processar a recuperação de senha.");
     } catch (err) {
       setError("Erro ao conectar ao servidor.");
     }
   };
+  
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", position: "relative" }}>

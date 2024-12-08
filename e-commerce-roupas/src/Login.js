@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import Menu from "../components/Menu";
+
 
 function Login() {
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ function Login() {
           alignItems: "center",
         }}
       >
-        <Menu />
+   
       </header>
 
       {/* Mensagem de resposta como pop-up */}

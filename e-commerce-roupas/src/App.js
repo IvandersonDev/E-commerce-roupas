@@ -4,26 +4,26 @@ import Login from "./components/Login";
 import RecuperarSenha from "./components/RecuperarSenha";
 import Registro from "./components/Registro";
 import CadastroProduto from "./pages/CadastroProduto";
-import Header from "./components/Header";
 import Banner from "./components/Banner";
 import ProductList from "./components/ProductList";
 import SupplierList from "./components/SupplierList";
-import Contact from "./components/Contact"
+import Contact from "./components/Contato/Contact";
+import Menu from "./components/Menu"; // Importação corrigida
 
 function Home() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
-      <Header />
       <Banner />
       <ProductList />
     </div>
   );
 }
 
+
 function Fornecedores() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
-      <Header />
+      <Menu /> {/* Adiciona o Menu */}
       <main>
         <div className="banner">
           <h1>FORNECEDORES</h1>

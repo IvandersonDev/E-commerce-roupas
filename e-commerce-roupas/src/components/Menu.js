@@ -12,7 +12,7 @@ function Menu() {
       </div>
       <nav className="menu-nav">
         <Link to="/" className="menu-link">INÍCIO</Link>
-        <a href="#fornecedores" className="menu-link">FORNECEDORES</a> 
+        <Link href="/SupplierList" className="menu-link">FORNECEDORES</Link> 
         <a href="#loja" className="menu-link">LOJA</a>
         <a href="#roupas" className="menu-link">ROUPAS</a>
         <Link to="/Contact" className="menu-link">CONTATO</Link>

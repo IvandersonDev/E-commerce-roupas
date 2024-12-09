@@ -42,6 +42,7 @@
   
   /* Adicionando um pouco de espaçamento para inputs */
   input, select, textarea {
+    resize: none;
     width: 100%;
     padding: 10px;
     margin: 5px 0;

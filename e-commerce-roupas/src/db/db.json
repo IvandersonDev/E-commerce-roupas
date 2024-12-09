@@ -1,16 +1,14 @@
-
 {
-    "produtos": [
-      {
-        "id": 1,
-        "nome": "Produto A",
-        "descricao": "Descrição do Produto A",
-        "preco": "50,00",
-        "codigo": "123456789",
-        "categoria": "feminino",
-        "quantidade": 10,
-        "imagem": "https://via.placeholder.com/150"
-      }
-    ]
-  }
-  
+  "produtos": [
+    {
+      "id": "f78d",
+      "nome": "Camisa Polo",
+      "descricao": "Camisa confortável de algodão.",
+      "preco": "59",
+      "codigo": "123456",
+      "categoria": "masculino",
+      "quantidade": "9",
+      "imagem": "blob:http://localhost:3000/8552377a-fceb-48ab-aed2-c5af7a3b9a29"
+    }
+  ]
+}

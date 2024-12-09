@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
-import Input from '../components/Input';  // Componente genérico de Input
-import '../css/cadastroProdutos.css';  // Corrigido para o caminho correto
-import Menu from '../components/Menu';  // Importando o Menu aqui
+import { Helmet } from 'react-helmet';
+import Input from '../components/Input';
+import Menu from '../components/Menu';
+import '../css/cadastroProdutos.css';
 
 const CadastroProduto = () => {
   const [nome, setNome] = useState('');
@@ -10,37 +10,60 @@ const CadastroProduto = () => {
   const [preco, setPreco] = useState('');
   const [codigo, setCodigo] = useState('');
   const [categoria, setCategoria] = useState('');
-  const [imagem, setImagem] = useState(null);
+  const [imagem, setImagem] = useState(undefined);
   const [quantidade, setQuantidade] = useState(1);
   const [mensagem, setMensagem] = useState('');
   const [mensagemErro, setMensagemErro] = useState('');
 
-  const validarPreco = (preco) => {
-    return /^\d+(\.\d{1,2})?$/.test(preco);
-  };
+  const validarPreco = (preco) => /^\d+(\.\d{1,2})?$/.test(preco);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     if (!nome || !descricao || !preco || !codigo || !categoria || !imagem || !quantidade) {
       setMensagemErro('Todos os campos são obrigatórios.');
       return;
     }
-
     if (!validarPreco(preco)) {
       setMensagemErro('Preço inválido. Use o formato correto (ex: 50,00).');
       return;
     }
 
-    setMensagem('Produto inserido com sucesso!');
-    setMensagemErro('');
-    setNome('');
-    setDescricao('');
-    setPreco('');
-    setCodigo('');
-    setCategoria('');
-    setImagem(null);
-    setQuantidade(1);
+    const novoProduto = {
+      nome,
+      descricao,
+      preco,
+      codigo,
+      categoria,
+      quantidade,
+      imagem,
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/produtos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(novoProduto),
+      });
+
+      if (response.ok) {
+        setMensagem('Produto inserido com sucesso!');
+        setMensagemErro('');
+        setNome('');
+        setDescricao('');
+        setPreco('');
+        setCodigo('');
+        setCategoria('');
+        setImagem(undefined);
+        setQuantidade(1);
+      } else {
+        throw new Error('Erro ao salvar o produto no servidor.');
+      }
+    } catch (error) {
+      setMensagemErro('Erro ao salvar o produto no servidor.');
+    }
   };
 
   const handleImageChange = (e) => {
@@ -54,28 +77,76 @@ const CadastroProduto = () => {
 
   return (
     <div className="form-container">
-      {/* Menu será exibido apenas nessa página */}
+      <Helmet>
+        <title>Adicionar Produto</title>
+      </Helmet>
       <Menu />
-
       <h2>Cadastro de Produto</h2>
-
       {mensagem && <div className="success-message">{mensagem}</div>}
       {mensagemErro && <div className="error-message">{mensagemErro}</div>}
-
       <form onSubmit={handleSubmit} className="form">
         {/* Lado Esquerdo */}
         <div className="left-section">
-          <Input label="Nome do Produto" value={nome} onChange={(e) => setNome(e.target.value)} required />
-          <Input label="Descrição" value={descricao} onChange={(e) => setDescricao(e.target.value)} required type="textarea" />
-          <Input label="Preço" value={preco} onChange={(e) => setPreco(e.target.value)} required placeholder="Exemplo: 50,00" />
-          <Input label="Código de Barras" value={codigo} onChange={(e) => setCodigo(e.target.value)} required />
+          <div className="form-group">
+            <label htmlFor="nomeProduto">Nome do Produto</label>
+            <input
+              id="nomeProduto"
+              type="text"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
+              className="input-field"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="descricaoProduto">Descrição</label>
+            <textarea
+              id="descricaoProduto"
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+              required
+              className="input-field"
+            ></textarea>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="precoProduto">Preço</label>
+            <input
+              id="precoProduto"
+              type="text"
+              value={preco}
+              onChange={(e) => setPreco(e.target.value)}
+              required
+              placeholder="Exemplo: 50,00"
+              className="input-field"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="codigoProduto">Código de Barras</label>
+            <input
+              id="codigoProduto"
+              type="text"
+              value={codigo}
+              onChange={(e) => setCodigo(e.target.value)}
+              required
+              className="input-field"
+            />
+          </div>
         </div>
 
         {/* Lado Direito */}
         <div className="right-section">
           <div className="form-group">
-            <label>Categoria</label>
-            <select value={categoria} onChange={(e) => setCategoria(e.target.value)} required>
+            <label htmlFor="categoriaProduto">Categoria</label>
+            <select
+              id="categoriaProduto"
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
+              required
+              className="input-field"
+            >
               <option value="">Selecione...</option>
               <option value="feminino">Feminino</option>
               <option value="masculino">Masculino</option>
@@ -84,28 +155,34 @@ const CadastroProduto = () => {
           </div>
 
           <div className="form-group">
-            <label>Quantidade</label>
+            <label htmlFor="quantidadeProduto">Quantidade</label>
             <input
+              id="quantidadeProduto"
               type="number"
               value={quantidade}
               onChange={(e) => setQuantidade(e.target.value)}
               required
+              className="input-field"
             />
           </div>
 
           <div className="form-group">
-            <label>Imagem</label>
+            <label htmlFor="imagemProduto">Imagem</label>
             <input
+              id="imagemProduto"
               type="file"
               accept="image/png, image/jpeg"
               onChange={handleImageChange}
               required
+              className="input-field"
             />
             {imagem && <img src={imagem} alt="Preview" className="image-preview" />}
           </div>
         </div>
 
-        <button type="submit" onClick={handleSubmit}>Salvar e Adicionar</button>
+        <button type="submit" className="submit-button">
+          Salvar e Adicionar
+        </button>
       </form>
     </div>
   );

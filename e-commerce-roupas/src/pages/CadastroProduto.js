@@ -58,11 +58,14 @@ const CadastroProduto = () => {
         setCategoria('');
         setImagem(undefined);
         setQuantidade(1);
-      } else {
-        throw new Error('Erro ao salvar o produto no servidor.');
+        return;
       }
+  
+      const errorMessage = `Erro: ${response.status} - ${response.statusText}`;
+      throw new Error(errorMessage);
     } catch (error) {
-      setMensagemErro('Erro ao salvar o produto no servidor.');
+      console.error('Erro ao salvar o produto:', error);
+      setMensagemErro(error.message || 'Erro ao salvar o produto no servidor.');
     }
   };
 

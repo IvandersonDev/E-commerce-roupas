@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { createMessage } from "../../services/api";
 
 const MessageForm = () => {
@@ -22,6 +22,9 @@ const MessageForm = () => {
     message: "",
   });
 
+  // Estado para armazenar mensagens de sucesso ou erro
+  const [feedback, setFeedback] = useState({ type: "", message: "" });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     dispatch({ name, value }); // Atualiza o estado com o novo valor
@@ -32,38 +35,61 @@ const MessageForm = () => {
     try {
       if (formData.message.trim() === "") throw new Error("Mensagem vazia!");
       await createMessage(formData);
-      alert("Mensagem enviada com sucesso!");
+      setFeedback({ type: "success", message: "Mensagem enviada com sucesso!" });
       // Reseta o formulário
       dispatch({ name: "name", value: "" });
       dispatch({ name: "email", value: "" });
       dispatch({ name: "subject", value: "" });
       dispatch({ name: "message", value: "" });
     } catch (error) {
-      alert("Erro ao enviar mensagem: " + error.message);
+      setFeedback({ type: "error", message: "Erro ao enviar mensagem: " + error.message });
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Entre em Contato</h2>
+
+      {/* Feedback visual */}
+      {feedback.message && (
+        <p
+          role="alert"
+          className={feedback.type === "success" ? "feedback-success" : "feedback-error"}
+        >
+          {feedback.message}
+        </p>
+      )}
+
       {fields.map((field) => (
-        <input
-          key={field.name}
-          type={field.type}
-          name={field.name}
-          placeholder={field.placeholder}
-          value={formData[field.name]}
+        <div key={field.name} className="form-group">
+          <label htmlFor={field.name}>{field.placeholder}</label>
+          <input
+            id={field.name}
+            type={field.type}
+            name={field.name}
+            placeholder={field.placeholder}
+            value={formData[field.name]}
+            onChange={handleChange}
+            required
+            aria-label={`Campo para inserir seu ${field.placeholder.toLowerCase()}`}
+          />
+        </div>
+      ))}
+
+      <div className="form-group">
+        <label htmlFor="message">Mensagem</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Escreva sua mensagem aqui"
+          value={formData.message}
           onChange={handleChange}
           required
-        />
-      ))}
-      <textarea
-        name="message"
-        placeholder="Mensagem"
-        value={formData.message}
-        onChange={handleChange}
-        required
-      ></textarea>
-      <button type="submit">Enviar</button>
+          aria-label="Campo para inserir sua mensagem"
+        ></textarea>
+      </div>
+
+      <button type="submit" aria-label="Enviar mensagem">Enviar</button>
     </form>
   );
 };

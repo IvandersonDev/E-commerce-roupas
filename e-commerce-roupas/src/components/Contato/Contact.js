@@ -23,33 +23,17 @@ const Contact = () => {
             <MessageForm />
           </div>
 
-          {/* Informações de Contato */}
-          <div className="contact-info">
-            <div className="info-item">
+          <ul className="contact-info">
+            <li>
               <span>📞</span>
               <p>
                 <strong>+44 123 456 789</strong>
                 <br />
                 Para suporte
               </p>
-            </div>
-            <div className="info-item">
-              <span>📧</span>
-              <p>
-                <strong>email@exemplo.com</strong>
-                <br />
-                Entre em contato por e-mail
-              </p>
-            </div>
-            <div className="info-item">
-              <span>💬</span>
-              <p>
-                <strong>Chat</strong>
-                <br />
-                Chat em tempo real
-              </p>
-            </div>
-          </div>
+            </li>
+            ...
+          </ul>
         </section>
 
         {/* Mapa */}

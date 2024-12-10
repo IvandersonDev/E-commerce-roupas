@@ -19,12 +19,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start:api": "json-server --watch src/db/db.json --port 5000"
-  },
+  "start:api": "json-server --watch src/db/db.json --port 5000",
+  "start:contato": "json-server --watch src/db/contato.json --port 5001",
+  "start:all": "concurrently \"npm run start:api\" \"npm run start:contato\"",
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+}
+,
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -46,4 +49,6 @@
   "devDependencies": {
     "json-server": "^1.0.0-beta.3"
   }
+  
+
 }

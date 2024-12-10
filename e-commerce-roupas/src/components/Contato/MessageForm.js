@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { createMessage } from "../../services/api";
+import { createMessage } from "../../services/messageApi";
 
 const MessageForm = () => {
   const fields = [
@@ -8,13 +8,11 @@ const MessageForm = () => {
     { type: "text", name: "subject", placeholder: "Assunto" },
   ];
 
-  // Define o reducer para gerenciar o estado do formulário
   const reducer = (state, { name, value }) => ({
     ...state,
     [name]: value,
   });
 
-  // Inicializa o estado do formulário usando o useReducer
   const [formData, dispatch] = useReducer(reducer, {
     name: "",
     email: "",
@@ -22,12 +20,11 @@ const MessageForm = () => {
     message: "",
   });
 
-  // Estado para armazenar mensagens de sucesso ou erro
   const [feedback, setFeedback] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    dispatch({ name, value }); // Atualiza o estado com o novo valor
+    dispatch({ name, value });
   };
 
   const handleSubmit = async (e) => {
@@ -36,7 +33,6 @@ const MessageForm = () => {
       if (formData.message.trim() === "") throw new Error("Mensagem vazia!");
       await createMessage(formData);
       setFeedback({ type: "success", message: "Mensagem enviada com sucesso!" });
-      // Reseta o formulário
       dispatch({ name: "name", value: "" });
       dispatch({ name: "email", value: "" });
       dispatch({ name: "subject", value: "" });
@@ -50,7 +46,6 @@ const MessageForm = () => {
     <form onSubmit={handleSubmit}>
       <h2>Entre em Contato</h2>
 
-      {/* Feedback visual */}
       {feedback.message && (
         <p
           role="alert"
@@ -89,7 +84,7 @@ const MessageForm = () => {
         ></textarea>
       </div>
 
-      <button type="submit" aria-label="Enviar mensagem">Enviar</button>
+      <button type="submit">Enviar</button>
     </form>
   );
 };

@@ -9,6 +9,36 @@
       "categoria": "masculino",
       "quantidade": "9",
       "imagem": "blob:http://localhost:3000/8552377a-fceb-48ab-aed2-c5af7a3b9a29"
+    },
+    {
+      "id": "80c1",
+      "nome": "Camisa",
+      "descricao": "Cor: Branca\nTamanho: M",
+      "preco": "25",
+      "codigo": "0127918460346092469012",
+      "categoria": "masculino",
+      "quantidade": "11",
+      "imagem": "blob:http://localhost:3000/646cca42-05d0-4c25-9f02-9937335f8032"
+    },
+    {
+      "id": "f7e8",
+      "nome": "Camisa",
+      "descricao": "Cor: Branca\nTamanho: p",
+      "preco": "100",
+      "codigo": "027482759034809234732",
+      "categoria": "masculino",
+      "quantidade": "15",
+      "imagem": "blob:http://localhost:3000/e99f8a46-073c-4a32-9b8f-10d79ec4021a"
+    },
+    {
+      "id": "790a",
+      "nome": "Vestido",
+      "descricao": "Vestido longo\nCor: preto\nTamanho: G",
+      "preco": "150",
+      "codigo": "00000003333484858548",
+      "categoria": "feminino",
+      "quantidade": "8",
+      "imagem": "blob:http://localhost:3000/ede83c51-d3e5-45b1-ba46-949c500a013d"
     }
   ]
 }

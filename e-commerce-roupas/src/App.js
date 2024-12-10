@@ -6,7 +6,7 @@ import Registro from "./components/Registro";
 import CadastroProduto from "./pages/CadastroProduto";
 import Banner from "./components/Banner";
 import ProductList from "./components/ProductList";
-import SupplierList from "./components/SupplierList";
+import SupplierListSection from "./components/SupplierListSection";
 import Contact from "./components/Contato/Contact";
 import Menu from "./components/Menu"; // Importação corrigida
 
@@ -28,7 +28,7 @@ function Fornecedores() {
         <div className="banner">
           <h1>FORNECEDORES</h1>
         </div>
-        <SupplierList />
+        <SupplierListSection />
       </main>
     </div>
   );

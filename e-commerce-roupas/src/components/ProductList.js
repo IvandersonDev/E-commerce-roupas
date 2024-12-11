@@ -1,50 +1,25 @@
 import React from "react";
+import ProductCard from "./ProductCard";
+import "../css/ProductList.css";
 
 function ProductList() {
   const products = Array.from({ length: 6 }, (_, index) => ({
-    id: index + 1,
+    id: `product-${index + 1}`, // Garantindo keys únicas
     name: "Lorem Ipsum Dolor",
-    image: "https://via.placeholder.com/480x606"
+    price: `$${(index + 1) * 10}`,
+    image: "https://via.placeholder.com/300x400",
   }));
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-        gap: "20px"
-      }}>
-        {products.map(product => (
-          <div key={product.id} style={{
-            border: "1px solid #ddd",
-            borderRadius: "8px",
-            overflow: "hidden"
-          }}>
-            <img
-              src={product.image}
-              alt={product.name}
-              style={{ width: "100%", height: "auto" }}
-            />
-            <div style={{ backgroundColor: "#000", color: "#fff", padding: "10px" }}>
-              {product.name}
-            </div>
-          </div>
+    <div className="product-list">
+      <div className="product-grid">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
-      <div style={{ marginTop: "20px" }}>
-        <button style={{
-          padding: "10px 20px",
-          marginRight: "10px",
-          border: "none",
-          backgroundColor: "#ddd",
-          cursor: "pointer"
-        }}>Anterior</button>
-        <button style={{
-          padding: "10px 20px",
-          border: "none",
-          backgroundColor: "#ddd",
-          cursor: "pointer"
-        }}>Próximo</button>
+      <div className="product-navigation">
+        <button className="product-button">Anterior</button>
+        <button className="product-button">Próximo</button>
       </div>
     </div>
   );

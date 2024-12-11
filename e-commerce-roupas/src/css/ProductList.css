@@ -1,0 +1,23 @@
+.product-list {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .product-navigation {
+    margin-top: 20px;
+  }
+  
+  .product-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+  }
+  

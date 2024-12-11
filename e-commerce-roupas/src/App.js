@@ -6,9 +6,11 @@ import Registro from "./components/Registro";
 import CadastroProduto from "./pages/CadastroProduto";
 import Banner from "./components/Banner";
 import ProductList from "./components/ProductList";
-import SupplierListSection from "./components/SupplierListSection";
+import SupplierList from "./components/SupplierList";
 import Contact from "./components/Contato/Contact";
 import Menu from "./components/Menu"; // Importação corrigida
+import ProductsPage from "./pages/ProductsPage"; // Ajustado o caminho
+ // Importação da nova página
 
 function Home() {
   return (
@@ -17,10 +19,9 @@ function Home() {
       <ProductList />
     </div>
   );
-}
+ };
 
-
-function Fornecedores() {
+ function Fornecedores() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
       <Menu /> {/* Adiciona o Menu */}
@@ -28,11 +29,11 @@ function Fornecedores() {
         <div className="banner">
           <h1>FORNECEDORES</h1>
         </div>
-        <SupplierListSection />
+        <SupplierList />
       </main>
     </div>
   );
-}
+};
 
 function App() {
   return (
@@ -41,15 +42,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/fornecedores" element={<Fornecedores />} /> {/* Nova rota */}
+          <Route path="/fornecedores" element={<Fornecedores />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/recuperar-senha" element={<RecuperarSenha />} />
           <Route path="/cadastro-produto" element={<CadastroProduto />} />
           <Route path="/contato" element={<Contact />} />
+          <Route path="/produtos" element={<ProductsPage />} /> {/* Nova rota */}
         </Routes>
       </div>
     </Router>
   );
-}
+};
 
 export default App;

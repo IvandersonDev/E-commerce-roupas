@@ -1,0 +1,12 @@
+.page-header {
+    text-align: center;
+    padding: 2rem 0;
+    background: #ddd;
+  }
+  
+  .error-message {
+    text-align: center;
+    color: red;
+    font-size: 18px;
+  }
+  

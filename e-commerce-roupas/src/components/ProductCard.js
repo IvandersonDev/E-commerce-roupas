@@ -1,13 +1,24 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
+import "../css/ProductCard.css"; 
+import "../css/ProductList.css";
 
 const ProductCard = ({ product }) => {
   return (
-    <div style={{ width: '480px', margin: '10px', textAlign: 'center', background: '#f0f0f0', padding: '1rem' }}>
-      <img src={product.image} alt={product.name} style={{ width: '100%', height: 'auto' }} />
-      <h3>{product.name}</h3>
-      <p>{product.price}</p>
+    <div className="product-card">
+      <img src={product.image} alt={product.name} className="product-image" />
+      <h3 className="product-name">{product.name}</h3>
+      <p className="product-price">{product.price}</p>
     </div>
   );
+};
+
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string,
+  }).isRequired,
 };
 
 export default ProductCard;

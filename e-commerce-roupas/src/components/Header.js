@@ -1,20 +1,21 @@
 import React from 'react';
 import { FaShoppingBag, FaSearch, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import "../css/Header.css";
 
 const Header = () => {
   return (
-    <header style={headerStyle}>
-      <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-        <FaShoppingBag style={{ fontSize: "24px", marginRight: "10px" }} />
-        <div style={{ fontSize: "24px", fontWeight: "bold" }}>Pabna</div>
+    <header className="header">
+      <div className="header-logo">
+        <FaShoppingBag className="header-icon" />
+        <span className="header-title">Pabna</span>
       </div>
-      <nav style={navStyle}>
-        <Link to="/" style={linkStyle}>INÍCIO</Link>
-        <Link to="/loja" style={linkStyle}>LOJA</Link>
-        <Link to="/roupas" style={linkStyle}>ROUPAS</Link>
-        <FaSearch style={{ fontSize: "18px", marginLeft: "15px", cursor: "pointer" }} />
-        <FaUserCircle style={{ fontSize: "24px", marginLeft: "15px", cursor: "pointer" }} />
+      <nav className="header-nav">
+        <Link to="/" className="header-link">Início</Link>
+        <Link to="/loja" className="header-link">Loja</Link>
+        <Link to="/roupas" className="header-link">Roupas</Link>
+        <FaSearch className="header-action" aria-label="Buscar" />
+        <FaUserCircle className="header-action" aria-label="Perfil" />
       </nav>
     </header>
   );

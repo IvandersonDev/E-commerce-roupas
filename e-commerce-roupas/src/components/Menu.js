@@ -14,7 +14,7 @@ function Menu() {
         <Link to="/" className="menu-link">INÍCIO</Link>
         <Link to="/fornecedores" className="menu-link">FORNECEDORES</Link>
         <a href="#loja" className="menu-link">LOJA</a>
-        <a href="#roupas" className="menu-link">ROUPAS</a>
+        <a href="/produtos" className="menu-link">ROUPAS</a>
         <Link to="/contato" className="menu-link">CONTATO</Link>
         
         <FaSearch className="menu-search" />

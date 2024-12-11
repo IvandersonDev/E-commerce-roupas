@@ -6,7 +6,7 @@ import Registro from "./components/Registro";
 import CadastroProduto from "./pages/CadastroProduto";
 import Banner from "./components/Banner";
 import ProductList from "./components/ProductList";
-import SupplierList from "./components/SupplierList";
+import SupplierList from "./components/SupplierListSection";
 import Contact from "./components/Contato/Contact";
 import Menu from "./components/Menu"; // Importação corrigida
 import ProductsPage from "./pages/ProductsPage"; // Ajustado o caminho

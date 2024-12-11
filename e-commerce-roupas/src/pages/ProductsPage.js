@@ -5,7 +5,7 @@ import "../css/ProductsPage.css";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(undefined);
 
   useEffect(() => {
     const fetchProducts = async () => {
